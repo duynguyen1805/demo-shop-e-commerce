@@ -32,7 +32,7 @@ const Register_form: React.FC<ToggleProps> = ({ handleToggleForm }) => {
         <span className="text-xs text-gray-500 w-auto px-4">HOẶC</span>
         <div className="border border-solid border-gray-300 w-full"></div>
       </div>
-      <div className="h-[50px] w-full flex items-center place-content-between">
+      {/* <div className="h-[50px] w-full flex items-center place-content-between">
         <div className="h-[40px] w-[165px] border flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-100">
           <Image src={logo_facebook} alt="" height="24" width="24" />
           <span className="text-sm">Facebook</span>
@@ -41,7 +41,7 @@ const Register_form: React.FC<ToggleProps> = ({ handleToggleForm }) => {
           <Image src={logo_google} alt="" height="24" width="24" />
           <span className="text-sm">Google</span>
         </div>
-      </div>
+      </div> */}
       <div className="h-auto w-full flex items-center justify-center mt-6">
         <p className="text-xs text-gray-500">
           Bằng việc đăng ký, bạn đã đồng ý với Shopee về <br></br>
