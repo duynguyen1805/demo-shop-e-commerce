@@ -195,7 +195,7 @@ const Quan_ly_tai_khoan = () => {
                 type="text"
                 id="phonenumber"
                 onChange={(e) => setPhonenumber(e.target.value)}
-                className="h-[40px] w-auto border border-gray-200 rounded-md px-2 outline-none"
+                className="h-[40px] w-auto bg-white border border-gray-200 rounded-md px-2 outline-none"
               />
             </div>
             <div className="flex items-center justify-start gap-4 ">
@@ -209,7 +209,7 @@ const Quan_ly_tai_khoan = () => {
                 type="text"
                 id="password"
                 onChange={(e) => setPassword(e.target.value)}
-                className="h-[40px] w-auto border border-gray-200 rounded-md px-2 outline-none"
+                className="h-[40px] w-auto bg-white border border-gray-200 rounded-md px-2 outline-none"
               />
             </div>
             <div className="flex items-center justify-start gap-4 ">
@@ -223,7 +223,7 @@ const Quan_ly_tai_khoan = () => {
                 type="text"
                 id="name"
                 onChange={(e) => setUsername(e.target.value)}
-                className="h-[40px] w-auto border border-gray-200 rounded-md px-2 outline-none"
+                className="h-[40px] w-auto bg-white border border-gray-200 rounded-md px-2 outline-none"
               />
             </div>
             <div className="flex items-center justify-start gap-4 ">
@@ -237,7 +237,7 @@ const Quan_ly_tai_khoan = () => {
                 type="text"
                 id="address"
                 onChange={(e) => setAddress(e.target.value)}
-                className="h-[40px] w-auto border border-gray-200 rounded-md px-2 outline-none"
+                className="h-[40px] w-auto bg-white border border-gray-200 rounded-md px-2 outline-none"
               />
             </div>
             <div className="flex items-center justify-start gap-4 ">
@@ -264,7 +264,7 @@ const Quan_ly_tai_khoan = () => {
                     )}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0">
+                <PopoverContent className="w-auto p-0 bg-white">
                   <Calendar
                     mode="single"
                     selected={date_birthday || new Date()}
@@ -273,6 +273,7 @@ const Quan_ly_tai_khoan = () => {
                     captionLayout="dropdown"
                     fromYear={1970}
                     toYear={2025}
+                    className="bg-white border border-gray-500"
                   />
                 </PopoverContent>
               </Popover>

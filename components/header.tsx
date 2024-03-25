@@ -90,7 +90,7 @@ const Header = () => {
             <input
               type="text"
               name="search"
-              className="border border-gray-300 h-full w-full text-lg px-2 pr-[64px] rounded outline-none"
+              className="bg-white border border-gray-300 h-full w-full text-lg px-2 pr-[64px] rounded outline-none"
             />
             <button className="absolute right-1 bg-main_color rounded h-[38px] w-[60px] flex items-center justify-center hover:bg-blue-500">
               <Image

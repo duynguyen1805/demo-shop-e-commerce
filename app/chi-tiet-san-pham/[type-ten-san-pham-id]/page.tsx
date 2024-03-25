@@ -307,7 +307,7 @@ const Chitiet_sanpham = () => {
                       onChange={(e) =>
                         setquantity_order(Number(e.target.value))
                       }
-                      className="h-full w-full px-1 pl-1 border-y border-gray-300 outline-none text-center"
+                      className="h-full w-full px-1 pl-1 bg-white border-y border-gray-300 outline-none text-center"
                     />
                     <button
                       className="absolute right-[-18px] h-9 w-9 border border-gray-300 bg-white flex items-center justify-center hover:bg-gray-100"

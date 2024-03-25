@@ -168,7 +168,7 @@ const Danhmuc_chitiet = () => {
                     min={0}
                     pattern="[0-9]*"
                     placeholder="TỪ"
-                    className="h-[30px] w-[140px] outline-none pl-2 hiddent_bnt_input_type_text rounded"
+                    className="h-[30px] w-[140px] outline-none pl-2 bg-white hiddent_bnt_input_type_text rounded"
                   />
                   <div className="h-full w-auto flex items-center">-</div>
                   <input
@@ -176,7 +176,7 @@ const Danhmuc_chitiet = () => {
                     name="giaketthuc"
                     min={0}
                     placeholder="ĐẾN"
-                    className="h-[30px] w-[140px] outline-none pl-2 rounded"
+                    className="h-[30px] w-[140px] bg-white outline-none pl-2 rounded"
                   />
                 </div>
                 <button className="h-[40px] w-full flex items-center justify-center bg-main_color text-white rounded hover:bg-blue-500">

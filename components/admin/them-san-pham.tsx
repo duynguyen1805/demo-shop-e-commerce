@@ -198,7 +198,7 @@ const Them_san_pham = () => {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="h-[40px] w-full border border-gray-200 rounded-md px-2 outline-none"
+              className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
             />
           </div>
           <div className="grid grid-cols-3 gap-4">
@@ -266,7 +266,7 @@ const Them_san_pham = () => {
                 id="quantity"
                 value={quantity}
                 onChange={(e) => setquantity(Number(e.target.value))}
-                className="h-[40px] w-full border border-gray-200 rounded-md px-2 outline-none"
+                className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
               />
             </div>
           </div>
@@ -283,7 +283,7 @@ const Them_san_pham = () => {
                 id="giaban"
                 value={price}
                 onChange={(e) => setPrice(Number(e.target.value))}
-                className="h-[40px] w-full border border-gray-200 rounded-md px-2 outline-none"
+                className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
               />
             </div>
             <div className="flex flex-col items-start justify-center gap-1">
@@ -298,7 +298,7 @@ const Them_san_pham = () => {
                 id="discount"
                 value={persent_discount}
                 onChange={(e) => setpersent_discount(Number(e.target.value))}
-                className="h-[40px] w-full border border-gray-200 rounded-md px-2 outline-none"
+                className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
               />
             </div>
             <div className="flex flex-col items-start justify-center gap-1">
@@ -326,7 +326,7 @@ const Them_san_pham = () => {
           <div className="grid grid-cols-1">
             <div className="h-full w-full relative overflow-hidden">
               <input
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                className="absolute inset-0 w-full h-full bg-white opacity-0 cursor-pointer"
                 type="file"
                 accept="image/*"
                 multiple
@@ -387,7 +387,7 @@ const Them_san_pham = () => {
       </div>
       <div className="h-full w-1/2 flex flex-col items-end space-y-5 overflow-auto">
         <textarea
-          className="h-auto w-full min-h-[500px] px-2 py-2 border border-gray-300 rounded-md outline-none"
+          className="h-auto w-full min-h-[500px] px-2 py-2 bg-white border border-gray-300 rounded-md outline-none"
           placeholder="Nhập mô tả, thông tin sản phẩm"
           value={mota}
           onChange={(e) => setmota(e.target.value)}

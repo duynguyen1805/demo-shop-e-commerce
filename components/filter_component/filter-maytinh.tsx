@@ -27,7 +27,11 @@ const Filter_maytinh = () => {
                 key={index}
                 className="h-auto w-full text-base flex items-center space-x-2"
               >
-                <input type="checkbox" value={item} className=""></input>
+                <input
+                  type="checkbox"
+                  value={item}
+                  className="bg-white"
+                ></input>
                 <div className="h-auto w-full">{item}</div>
               </div>
             );

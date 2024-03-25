@@ -103,7 +103,7 @@ const Login_form: React.FC<Props> = ({ handleToggleForm }) => {
           onChange={(e) => setaccount(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Email/Số điện thoại/Tên đăng nhập"
-          className="h-10 w-full border px-2 outline-none font-thin mb-7"
+          className="h-10 w-full bg-white border px-2 outline-none font-thin mb-7"
         />
 
         <div className="relative h-10 w-full flex flex-row mb-7">
@@ -114,7 +114,7 @@ const Login_form: React.FC<Props> = ({ handleToggleForm }) => {
             onChange={(e) => setpassword(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Mật khẩu"
-            className="h-10 w-full border px-2 pr-[34px] outline-none font-thin"
+            className="h-10 w-full bg-white border px-2 pr-[34px] outline-none font-thin"
           />
           <div className="absolute right-0 top-0 h-full w-[30px] mr-1 flex items-center justify-center">
             <Image

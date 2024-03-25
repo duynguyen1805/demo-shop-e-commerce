@@ -16,13 +16,13 @@ const Register_form: React.FC<ToggleProps> = ({ handleToggleForm }) => {
         type="text"
         name="account"
         placeholder="Số điện thoại"
-        className="h-10 w-full border px-2 outline-none font-thin mb-7"
+        className="h-10 w-full bg-white border px-2 outline-none font-thin mb-7"
       />
       <input
         type="text"
         name="otp"
         placeholder="Mã xác thực OTP"
-        className="h-10 w-full border px-2 outline-none font-thin mb-7"
+        className="h-10 w-full bg-white border px-2 outline-none font-thin mb-7"
       />
       <button className="h-10 w-full flex items-center justify-center text-white bg-blue-400 border border-blue-400 cursor-pointer hover:bg-main_color hover:border-main_color">
         ĐĂNG KÝ
