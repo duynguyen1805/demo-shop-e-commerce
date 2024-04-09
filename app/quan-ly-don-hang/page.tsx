@@ -30,6 +30,14 @@ import { useToast } from "@/components/ui/use-toast";
 
 import { columns_table_manager_order } from "../../components/user/columns-table-manager-order";
 import { DataTable_manager_order } from "../../components/user/data-table-manager-order";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import Link from "next/link";
 
 type info_user = {
   id_user: string;
@@ -104,7 +112,31 @@ const Quan_ly_don_hang = () => {
   return (
     <div className="min-h-screen h-auto w-full">
       <Header />
-      <div className="h-full min-h-[calc(100vh-84px)] bg-[#f5f5f5] flex justify-center">
+      <div className="h-full min-h-[calc(100vh-84px)] bg-[#f5f5f5] flex flex-col items-center">
+        <div className="w-[1280px] flex items-center mt-5">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/" className="text-lg font-normal">
+                    Trang chủ
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link
+                    href="/quan-ly-don-hang"
+                    className="text-lg font-normal"
+                  >
+                    Quản lý đơn hàng
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
         <div className="h-auto min-h-[400px] w-[1280px] py-2 px-2 mt-5 rounded-md bg-white">
           <div className="h-[50px] w-full flex items-center justify-center text-2xl font-bold uppercase pt-4">
             Quản lý đơn hàng

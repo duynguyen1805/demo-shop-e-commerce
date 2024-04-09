@@ -36,7 +36,7 @@ type build_data_manager_order_admin = {
   timestamp: number;
 };
 
-export const columns_table_manager_order_admin: ColumnDef<build_data_manager_order_admin>[] =
+export const columns_table_statistics: ColumnDef<build_data_manager_order_admin>[] =
   [
     {
       id: "select",
@@ -76,23 +76,27 @@ export const columns_table_manager_order_admin: ColumnDef<build_data_manager_ord
     },
     {
       accessorKey: "payment",
-      header: ({ column }) => {
-        return (
-          <Button
-            variant="ghost"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          >
-            PTTT
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-          </Button>
-        );
-      },
+      header: "PTTT",
       cell: ({ row }) => {
-        return <div className="text-left ml-5">{row.getValue("payment")}</div>;
+        let value: string = row.getValue("payment");
+        return (
+          <>
+            {value && value == "COD" && (
+              <div className="text-left">{value}</div>
+            )}
+            {value && value == "chuyenphatnhanh" && (
+              <div className="text-left">Chuyển phát nhanh</div>
+            )}
+            {value && value == "thanhtoanmomo" && (
+              <div className="text-left">Thanh toán MoMo</div>
+            )}
+          </>
+        );
       },
     },
     {
       accessorKey: "total_price",
+      //   header: "Tổng tiền",
       header: ({ column }) => {
         return (
           <Button
@@ -113,7 +117,7 @@ export const columns_table_manager_order_admin: ColumnDef<build_data_manager_ord
           currency: "VND",
         }).format(amount);
 
-        return <div className="text-left ml-3">{formatted}</div>;
+        return <div className="text-left">{formatted}</div>;
       },
     },
     {
@@ -161,7 +165,7 @@ export const columns_table_manager_order_admin: ColumnDef<build_data_manager_ord
       cell: ({ row }) => {
         let status = row.getValue("status");
         return (
-          <div className="text-left ml-5">
+          <div className="pl-6">
             {status == "placed" && "Đặt hàng"}
             {status == "confirmed" && "Đã xác nhận"}
             {status == "processing" && "Đang xử lý"}

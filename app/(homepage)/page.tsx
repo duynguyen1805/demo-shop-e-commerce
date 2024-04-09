@@ -28,6 +28,7 @@ import { db } from "../../firebase.config";
 import Loading from "@/components/loading";
 import { setIsLoading } from "@/provider/redux/loading";
 import Cart_item_loading from "@/components/cart/cart-item-loading";
+import Cart_tintuc from "@/components/cart/cart-tintuc";
 
 const Homepage = () => {
   const isLoading: boolean = useSelector(
@@ -68,7 +69,7 @@ const Homepage = () => {
       {/**Danh muc san pham */}
       <div className="h-auto min-h-[calc(100vh-277px-84px)] bg-[#f5f5f5] flex flex-col items-center justify-center">
         <Danhmuc_homepage />
-        <div className="h-auto min-h-[500px] w-[1200px] bg-white mt-5">
+        <div className="h-auto min-h-[500px] w-[1200px] bg-white mt-5 pb-5">
           <div className="h-[60px] w-full px-4 flex items-center">
             <span className="text-lg text-gray-400">SẢN PHẨM BÁN CHẠY</span>
           </div>
@@ -90,6 +91,26 @@ const Homepage = () => {
                 <Cart_item_loading />
               </>
             )}
+          </div>
+        </div>
+        <div className="h-auto min-h-[500px] w-[1200px] bg-white mt-5 pb-5">
+          <div className="h-[60px] w-full px-4 flex items-center">
+            <span className="text-lg text-gray-400">TIN TỨC - BÀI VIẾT</span>
+          </div>
+          <div className="w-full grid grid-cols-4 gap-5 px-3">
+            <Cart_tintuc />
+            <Cart_tintuc />
+            <Cart_tintuc />
+            <Cart_tintuc />
+            <Cart_tintuc />
+            <Cart_tintuc />
+            <Cart_tintuc />
+            <Cart_tintuc />
+          </div>
+          <div className="w-full flex items-center justify-center mt-5">
+            <div className="w-fit px-4 py-[6px] border border-main_color bg-main_color text-white rounded hover:bg-white hover:text-main_color cursor-pointer">
+              Xem thêm
+            </div>
           </div>
         </div>
       </div>

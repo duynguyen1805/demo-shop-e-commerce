@@ -5,6 +5,7 @@ import Quan_ly_tai_khoan from "@/components/admin/quan-ly-tai-khoan";
 import Them_san_pham from "@/components/admin/them-san-pham";
 import Quan_ly_san_pham from "@/components/admin/quan-ly-san-pham";
 import Quan_ly_don_hang from "@/components/admin/quan-ly-don-hang";
+import Thong_ke_doanh_thu from "@/components/admin/thong-ke-doanh-thu";
 
 const Admin = () => {
   const [tabSelect, settabSelect] = useState<string>("");
@@ -80,8 +81,9 @@ const Admin = () => {
               Quản lý tài khoản
             </div>
           </div>
-          <div className="h-full w-[calc(100vw-360px)] border border-blue-500 bg-white rounded-l-3xl shadow-lg px-4 py-2">
+          <div className="h-full w-[calc(100vw-360px)] border border-blue-500 bg-white rounded-l-xl shadow-lg px-4 py-2">
             {tabSelect == "quanlydonhang" && <Quan_ly_don_hang />}
+            {tabSelect == "thongkedoanhthu" && <Thong_ke_doanh_thu />}
             {tabSelect == "quanlytaikhoan" && <Quan_ly_tai_khoan />}
             {tabSelect == "themsanpham" && <Them_san_pham />}
             {tabSelect == "quanlysanpham" && <Quan_ly_san_pham />}

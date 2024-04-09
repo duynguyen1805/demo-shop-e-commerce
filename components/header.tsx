@@ -184,8 +184,7 @@ const Header = () => {
                       </div>
                     );
                   })}
-                {cart_order &&
-                (cart_order.length == 0 || cart_order == null) ? (
+                {(cart_order && cart_order.length == 0) || !cart_order ? (
                   <div className="h-[300px] w-full text-xl flex items-center justify-center">
                     Giỏ hàng rỗng, hãy thêm sản phẩm vào.
                   </div>

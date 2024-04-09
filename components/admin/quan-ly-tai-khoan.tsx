@@ -264,7 +264,7 @@ const Quan_ly_tai_khoan = () => {
                     )}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0 bg-white">
+                <PopoverContent className="w-auto p-0">
                   <Calendar
                     mode="single"
                     selected={date_birthday || new Date()}
@@ -273,7 +273,7 @@ const Quan_ly_tai_khoan = () => {
                     captionLayout="dropdown"
                     fromYear={1970}
                     toYear={2025}
-                    className="bg-white border border-gray-500"
+                    className="bg-white"
                   />
                 </PopoverContent>
               </Popover>

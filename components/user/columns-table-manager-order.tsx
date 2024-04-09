@@ -59,38 +59,6 @@ export const columns_table_manager_order: ColumnDef<build_data_manager_order>[] 
       accessorKey: "title",
       header: "Tên sản phẩm",
     },
-    //   {
-    //     accessorKey: "type_danhmuc",
-    //     header: ({ column }) => {
-    //       return (
-    //         <Button
-    //           variant="ghost"
-    //           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-    //         >
-    //           Danh mục
-    //           <ArrowUpDown className="ml-2 h-4 w-4" />
-    //         </Button>
-    //       );
-    //     },
-    //   },
-    // {
-    //   accessorKey: "type_product",
-    //   header: ({ column }) => {
-    //     return (
-    //       <Button
-    //         variant="ghost"
-    //         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-    //       >
-    //         Loại
-    //         <ArrowUpDown className="ml-2 h-4 w-4" />
-    //       </Button>
-    //     );
-    //   },
-    //   cell: ({ row }) => {
-    //     const data_type_product: any = row.getValue("type_product");
-    //     return <div className="pl-2">{data_type_product}</div>;
-    //   },
-    // },
     {
       accessorKey: "quantity_order",
       header: ({ column }) => {
@@ -161,7 +129,7 @@ export const columns_table_manager_order: ColumnDef<build_data_manager_order>[] 
       accessorKey: "payment",
       header: "PTTT",
       cell: ({ row }) => {
-        return <div className="text-center">{row.getValue("payment")}</div>;
+        return <div className="text-left">{row.getValue("payment")}</div>;
       },
     },
     {
@@ -178,11 +146,21 @@ export const columns_table_manager_order: ColumnDef<build_data_manager_order>[] 
         );
       },
       cell: ({ row }) => {
-        return <div className="text-center">{row.getValue("status")}</div>;
+        let status = row.getValue("status");
+        return (
+          <div className="pl-6">
+            {status == "placed" && "Đặt hàng"}
+            {status == "confirmed" && "Đã xác nhận"}
+            {status == "processing" && "Đang xử lý"}
+            {status == "outfordelivery" && "Đã giao cho Vận chuyển"}
+            {status == "delivered" && "Đã giao"}
+            {status == "cancelled" && "Đã hủy"}
+          </div>
+        );
       },
     },
     {
-      accessorKey: "time",
+      accessorKey: "timestamp",
       header: ({ column }) => {
         return (
           <Button
@@ -195,7 +173,19 @@ export const columns_table_manager_order: ColumnDef<build_data_manager_order>[] 
         );
       },
       cell: ({ row }) => {
-        return <div className="text-left">{row.getValue("time")}</div>;
+        let timestampToDateTimeString = (timestamp: any) => {
+          const date = new Date(timestamp);
+          const hours = date.getHours();
+          const minutes = "0" + date.getMinutes();
+          const formattedTime = hours + ":" + minutes.substr(-2);
+          const day = date.getDate();
+          const month = date.getMonth() + 1;
+          const year = date.getFullYear();
+          const formattedDate = day + "/" + month + "/" + year;
+          return formattedTime + ", " + formattedDate;
+        };
+        let date = timestampToDateTimeString(row.getValue("timestamp"));
+        return <div className="text-left">{date}</div>;
       },
     },
     {

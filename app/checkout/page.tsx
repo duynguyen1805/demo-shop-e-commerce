@@ -30,6 +30,14 @@ import { useToast } from "@/components/ui/use-toast";
 
 import { columns_table_checkout } from "../../components/user/columns-table-checkout";
 import { DataTable_checkout } from "../../components/user/data-table-checkout";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import Link from "next/link";
 
 type info_user = {
   id_user: string;
@@ -109,7 +117,7 @@ const Checkout = () => {
         persent_discount: item.persent_discount,
         price_after_discount: item.price_after_discount,
         quantity_order: item.quantity_order,
-        status: "Chờ xác nhận",
+        status: "placed",
         payment: payments,
         time: timestampToDateTimeString(timestamp),
         timestamp: timestamp,
@@ -120,7 +128,7 @@ const Checkout = () => {
     let build_data_order = {
       user: user,
       list_order: build_data_for_order_detail,
-      status: "Chờ xác nhận",
+      status: "placed",
       payment: payments,
       total_price: total_price,
       time: timestampToDateTimeString(timestamp),
@@ -149,7 +157,31 @@ const Checkout = () => {
   return (
     <div className="min-h-screen h-auto w-full">
       <Header />
-      <div className="h-full min-h-[calc(100vh-84px)] bg-[#f5f5f5] flex justify-center">
+      <div className="h-full min-h-[calc(100vh-84px)] bg-[#f5f5f5] flex flex-col items-center">
+        <div className="w-[1280px] flex items-center mt-5">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/" className="text-lg font-normal">
+                    Trang chủ
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link
+                    href="/quan-ly-don-hang"
+                    className="text-lg font-normal"
+                  >
+                    Quản lý đơn hàng
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
         <div className="h-auto min-h-[400px] w-[1280px] py-2 px-2 mt-5 rounded-md bg-white">
           <div className="h-[50px] w-full flex items-center justify-center text-2xl font-bold uppercase pt-4">
             Giỏ hàng hiện tại
@@ -205,6 +237,7 @@ const Checkout = () => {
               </div>
               <div className="flex items-center justify-end space-x-2">
                 <Button
+                  disabled={true}
                   variant="outline"
                   size="lg"
                   className="text-lg bg-main_color text-white hover:bg-blue-500 hover:text-white"

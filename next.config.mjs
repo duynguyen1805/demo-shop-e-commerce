@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   images: {
     remotePatterns: [
       {
@@ -19,6 +20,12 @@ const nextConfig = {
         hostname: "down-vn.img.susercontent.com",
         port: "",
         pathname: "/file/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn2.cellphones.com.vn",
+        port: "",
+        pathname: "/**",
       },
       {
         protocol: "https",

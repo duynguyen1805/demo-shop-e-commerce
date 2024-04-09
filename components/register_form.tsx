@@ -1,14 +1,27 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import logo_facebook from "../public/assets/facebook.svg";
-import logo_google from "../public/assets/google.svg";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 interface ToggleProps {
   handleToggleForm?: any;
 }
 
 const Register_form: React.FC<ToggleProps> = ({ handleToggleForm }) => {
+  const [status_btn, setstatus_btn] = useState<string>("sendotp");
+  const [input_otp, setinput_otp] = useState<any>();
+  const ex_otp = "123123";
+
+  const validate_otp = () => {
+    // check otp
+    if (input_otp == ex_otp) setstatus_btn("dangky");
+  };
+
   return (
     <div className="h-full min-h-[470px] w-[400px] bg-white rounded shadow-md py-[22px] px-[30px]">
       <div className="h-[58px] w-full text-xl text-center">Đăng ký</div>
@@ -16,32 +29,56 @@ const Register_form: React.FC<ToggleProps> = ({ handleToggleForm }) => {
         type="text"
         name="account"
         placeholder="Số điện thoại"
-        className="h-10 w-full bg-white border px-2 outline-none font-thin mb-7"
+        className="h-10 w-full bg-white border px-2 outline-none font-thin mb-3"
       />
-      <input
-        type="text"
-        name="otp"
-        placeholder="Mã xác thực OTP"
-        className="h-10 w-full bg-white border px-2 outline-none font-thin mb-7"
-      />
-      <button className="h-10 w-full flex items-center justify-center text-white bg-blue-400 border border-blue-400 cursor-pointer hover:bg-main_color hover:border-main_color">
-        ĐĂNG KÝ
-      </button>
+      <div className="w-full flex items-center justify-center mb-3">
+        <InputOTP
+          maxLength={6}
+          value={input_otp}
+          onChange={(value) => setinput_otp(value)}
+          onComplete={validate_otp}
+        >
+          <InputOTPGroup>
+            <InputOTPSlot index={0} />
+            <InputOTPSlot index={1} />
+            <InputOTPSlot index={2} />
+          </InputOTPGroup>
+          <InputOTPSeparator />
+          <InputOTPGroup>
+            <InputOTPSlot index={3} />
+            <InputOTPSlot index={4} />
+            <InputOTPSlot index={5} />
+          </InputOTPGroup>
+        </InputOTP>
+      </div>
+
+      {status_btn == "sendotp" && (
+        <button
+          className="h-10 w-full flex items-center justify-center text-white bg-blue-400 border border-blue-400 cursor-pointer hover:bg-main_color hover:border-main_color"
+          onClick={() => setstatus_btn("xacnhanotp")}
+        >
+          GỬI MÃ OTP
+        </button>
+      )}
+      {status_btn == "xacnhanotp" && (
+        <button
+          className="h-10 w-full flex items-center justify-center text-white bg-blue-400 border border-blue-400 cursor-pointer hover:bg-main_color hover:border-main_color"
+          onClick={() => validate_otp()}
+        >
+          XÁC NHẬN
+        </button>
+      )}
+      {status_btn == "dangky" && (
+        <button className="h-10 w-full flex items-center justify-center text-white bg-blue-400 border border-blue-400 cursor-pointer hover:bg-main_color hover:border-main_color">
+          ĐĂNG KÝ
+        </button>
+      )}
+
       <div className="h-auto w-full flex items-center my-2">
         <div className="border border-solid border-gray-300 w-full"></div>
         <span className="text-xs text-gray-500 w-auto px-4">HOẶC</span>
         <div className="border border-solid border-gray-300 w-full"></div>
       </div>
-      {/* <div className="h-[50px] w-full flex items-center place-content-between">
-        <div className="h-[40px] w-[165px] border flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-100">
-          <Image src={logo_facebook} alt="" height="24" width="24" />
-          <span className="text-sm">Facebook</span>
-        </div>
-        <div className="h-[40px] w-[165px] border flex items-center justify-center gap-2 cursor-pointer hover:bg-gray-100">
-          <Image src={logo_google} alt="" height="24" width="24" />
-          <span className="text-sm">Google</span>
-        </div>
-      </div> */}
       <div className="h-auto w-full flex items-center justify-center mt-6">
         <p className="text-xs text-gray-500">
           Bằng việc đăng ký, bạn đã đồng ý với Shopee về <br></br>

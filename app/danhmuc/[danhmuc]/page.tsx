@@ -25,6 +25,14 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 import { DANHMUC } from "@/constant";
 import Cart_item_chitiet from "@/components/cart/cart-item-chitiet";
@@ -50,6 +58,7 @@ import {
 import { db } from "../../../firebase.config";
 import { Input } from "@/components/ui/input";
 import Cart_item_loading from "@/components/cart/cart-item-loading";
+import Link from "next/link";
 
 const Danhmuc_chitiet = () => {
   const [arrProduct, setArr_Product] = useState<any[]>();
@@ -80,14 +89,30 @@ const Danhmuc_chitiet = () => {
       <Header />
       <div className="h-auto min-h-[calc(100vh-84px)] bg-[#f5f5f5] flex justify-center">
         <div className="h-auto min-h-[400px] w-[1480px] px-4 pt-4">
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/" className="text-lg font-normal">
+                    Trang chủ
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="./" className="text-lg font-normal">
+                    Máy tính - Laptop
+                  </Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              {/* ... */}
+            </BreadcrumbList>
+          </Breadcrumb>
           <div className="h-auto min-h-[400px] w-full flex gap-5">
             {/** ex filter */}
             <div className="h-auto min-h-[400px] w-[295px] py-3">
               <div className="h-auto w-full space-y-3">
-                {/* <span className="text-lg text-main_color font-bold flex gap-2">
-                  <List />
-                  Tất cả danh mục
-                </span> */}
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
                     <AccordionTrigger>
@@ -189,7 +214,7 @@ const Danhmuc_chitiet = () => {
               </div>
             </div>
             {/** ex list item */}
-            <div className="h-auto min-h-[calc[100vh-84px-20px]] w-[1200px] mt-5 flex flex-col">
+            <div className="h-auto min-h-[calc[100vh-84px-20px]] w-[1200px] flex flex-col">
               <div className="h-[70px] w-full px-2 gap-2 flex items-center">
                 <span className="font-bold">Sắp xếp theo: </span>
                 <Button variant={"outline"}>Phổ biến</Button>

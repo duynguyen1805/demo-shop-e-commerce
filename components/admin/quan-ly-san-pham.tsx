@@ -114,7 +114,7 @@ const Quan_ly_san_pham = () => {
 
   return (
     <div className="h-full w-full pt-0">
-      <div className="h-[720px] w-full">
+      <div className="h-full w-full overflow-auto">
         <DataTable_product columns={columns_table_product} data={arrProduct} />
       </div>
     </div>
