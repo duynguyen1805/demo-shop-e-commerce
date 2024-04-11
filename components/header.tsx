@@ -129,7 +129,7 @@ const Header = () => {
                     Thông báo đơn hàng
                   </span>
                   <Link
-                    href={"/quan-ly-don-hang"}
+                    href={"/quan-ly/quan-ly-don-hang"}
                     className="h-10 w-auto px-2 flex items-center justify-center text-white rounded bg-main_color hover:bg-blue-500 outline-none"
                   >
                     Xem trạng thái đơn
@@ -166,7 +166,7 @@ const Header = () => {
                     Sản phẩm đã thêm
                   </span>
                   <Link
-                    href={"/checkout"}
+                    href={"/quan-ly/checkout"}
                     className="h-10 w-auto px-2 text-white flex items-center justify-center rounded bg-main_color hover:bg-blue-500 outline-none"
                   >
                     Xem giỏ hàng
@@ -190,7 +190,7 @@ const Header = () => {
                   </div>
                 ) : (
                   <Link
-                    href={"/checkout"}
+                    href={"/quan-ly/checkout"}
                     className="h-[50px] min-h-[50px] w-full bg-main_color text-white text-xl flex items-center justify-center hover:bg-blue-500 cursor-pointer"
                   >
                     Đặt hàng
@@ -249,7 +249,7 @@ const Header = () => {
                       Địa chỉ của tôi
                     </Link>
                     <Link
-                      href={"/quan-ly-don-hang"}
+                      href={"/quan-ly/quan-ly-don-hang"}
                       className="h-[50px] w-full flex items-center justify-center border border-gray-200 hover:bg-gray-200 cursor-pointer"
                     >
                       Quản lý đơn hàng

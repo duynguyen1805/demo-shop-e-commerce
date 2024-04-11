@@ -72,8 +72,8 @@ export function DataTable_manager_order<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center py-4">
-        <DropdownMenu>
+      <div className="flex items-center">
+        {/* <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
               Columns
@@ -98,7 +98,7 @@ export function DataTable_manager_order<TData, TValue>({
                 );
               })}
           </DropdownMenuContent>
-        </DropdownMenu>
+        </DropdownMenu> */}
       </div>
       <div className="rounded-md border">
         <Table>
@@ -152,8 +152,8 @@ export function DataTable_manager_order<TData, TValue>({
       </div>
       <div className="flex flex-row place-content-between">
         <div className="flex-1 text-sm text-muted-foreground mt-5">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredSelectedRowModel().rows.length} của{" "}
+          {table.getFilteredRowModel().rows.length} hàng đang được chọn.
         </div>
 
         <div className="flex items-center justify-end space-x-2 py-4">
@@ -163,7 +163,7 @@ export function DataTable_manager_order<TData, TValue>({
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Trước
           </Button>
           <Button
             variant="outline"
@@ -171,7 +171,7 @@ export function DataTable_manager_order<TData, TValue>({
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Sau
           </Button>
         </div>
       </div>

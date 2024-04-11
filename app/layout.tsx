@@ -21,7 +21,7 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export const metadata: Metadata = {
-  title: "Shopee Clone - Login or Signup",
+  title: "E-commerce - Login or Signup",
   description: "No description",
 };
 

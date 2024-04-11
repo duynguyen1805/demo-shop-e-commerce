@@ -108,7 +108,7 @@ const Login_form: React.FC<Props> = ({ handleToggleForm }) => {
 
         <div className="relative h-10 w-full flex flex-row mb-7">
           <input
-            type={view_password ? "password" : "text"}
+            type={view_password ? "text" : "password"}
             name="password"
             value={password}
             onChange={(e) => setpassword(e.target.value)}
@@ -118,7 +118,7 @@ const Login_form: React.FC<Props> = ({ handleToggleForm }) => {
           />
           <div className="absolute right-0 top-0 h-full w-[30px] mr-1 flex items-center justify-center">
             <Image
-              src={view_password ? eye_lash : eye}
+              src={view_password ? eye : eye_lash}
               alt=""
               className="h-[20px] w-[20px] cursor-pointer"
               onClick={() => setview_password(!view_password)}
