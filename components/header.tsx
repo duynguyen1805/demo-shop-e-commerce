@@ -6,6 +6,8 @@ import icon_search from "../public/assets/icon-search.svg";
 import icon_notification from "../public/assets/icon-notification.svg";
 import icon_cart from "../public/assets/icon-cart.svg";
 import icon_user from "../public/assets/icon_user.png";
+import logo_abc from "../public/assets/abc.svg";
+
 // popover hover
 import {
   Popover,
@@ -74,9 +76,9 @@ const Header = () => {
 
   return (
     <>
-      <div className="h-[84px] w-full flex items-center justify-center bg-main_color sticky top-0 z-50">
+      <div className="h-[84px] w-full flex items-center justify-center bg-main_color bg-opacity-90 backdrop-filter backdrop-blur-sm sticky top-0 z-50">
         <div className="h-full w-[1200px] flex items-center place-content-between">
-          <a href="/" className="top-[-18px] h-[54px] w-[190px]">
+          {/* <a href="/" className="top-[-18px] h-[54px] w-[190px]">
             <svg viewBox="0 0 192 65" className="h-full w-full">
               <g fillRule="evenodd">
                 <path
@@ -85,6 +87,12 @@ const Header = () => {
                 ></path>
               </g>
             </svg>
+          </a> */}
+          <a
+            href="/"
+            className="top-[-10px] h-full w-[190px] flex items-center justify-end pr-5"
+          >
+            <Image src={logo_abc} alt="" height={65} width={65} />
           </a>
           <div className="relative h-[44px] w-[560px] flex items-center justify-center">
             <input
@@ -237,13 +245,13 @@ const Header = () => {
                       Quản trị
                     </Link>
                     <Link
-                      href={"/"}
+                      href={"/quan-ly/thong-tin-tai-khoan"}
                       className="h-[50px] w-full flex items-center justify-center border border-gray-200 hover:bg-gray-200 cursor-pointer"
                     >
                       Tài khoản của tôi
                     </Link>
                     <Link
-                      href={"/"}
+                      href={"/quan-ly/update-dia-chi-giao-hang"}
                       className="h-[50px] w-full flex items-center justify-center border border-gray-200 hover:bg-gray-200 cursor-pointer"
                     >
                       Địa chỉ của tôi

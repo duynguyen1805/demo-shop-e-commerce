@@ -31,6 +31,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { DataTablePagination } from "../ui/DataTablePagination";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -150,30 +151,8 @@ export function DataTable_checkout<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex flex-row place-content-between">
-        <div className="flex-1 text-sm text-muted-foreground mt-5">
-          {table.getFilteredSelectedRowModel().rows.length} của{" "}
-          {table.getFilteredRowModel().rows.length} dòng đang được chọn.
-        </div>
-
-        <div className="flex items-center justify-end space-x-2 py-4">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Trước
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Sau
-          </Button>
-        </div>
+      <div className="py-5">
+        <DataTablePagination table={table} />
       </div>
     </div>
   );

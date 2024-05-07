@@ -35,6 +35,7 @@ import {
 
 import Filter_combobox from "../filter_component/filter-combobox";
 import Filter_date_picker from "../filter_component/filter-date-picker";
+import { DataTablePagination } from "../ui/DataTablePagination";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -223,30 +224,8 @@ export function DataTable_statistics<TData, TValue>({
           </TableFooter>
         </Table>
       </div>
-      <div className="flex flex-row place-content-between">
-        <div className="flex-1 text-sm text-muted-foreground mt-5">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
-
-        <div className="flex items-center justify-end space-x-2 py-4">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </div>
+      <div className="py-5">
+        <DataTablePagination table={table} />
       </div>
     </div>
   );

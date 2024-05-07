@@ -29,6 +29,8 @@ import { Button } from "@/components/ui/button";
 
 import icon_momo from "../../../public/assets/icon-momo.png";
 import { useToast } from "@/components/ui/use-toast";
+import Update_infor_user from "@/components/user/update-infor-user";
+import Update_infor_account from "@/components/user/update-infor-account";
 
 type infor_user = {
   id_user: string;
@@ -43,7 +45,7 @@ type infor_user = {
 const Manager_Page = ({ params }: { params: { typequanly: string } }) => {
   const { toast } = useToast();
 
-  // --------quan-ly-don-hang--------
+  // ------------------quan-ly-don-hang------------------
   const [user, setuser] = useState<infor_user | null>(null);
 
   const [list_order, setlist_order] = useState<any[]>();
@@ -84,7 +86,7 @@ const Manager_Page = ({ params }: { params: { typequanly: string } }) => {
     fetching_data_order(user?.id_user);
   }, [user]);
 
-  // --------checkout--------
+  // -----------------------checkout-----------------------
   const [cart_order, setcart_order] = useState<any[]>([]);
   const [total_price, setTotal_price_order] = useState<number>(0);
   const [payments, setpayments] = useState<string>("COD");
@@ -265,6 +267,12 @@ const Manager_Page = ({ params }: { params: { typequanly: string } }) => {
           </div>
         </>
       )}
+
+      {/* CAP NHAT THONG TIN NGUOI DUNG */}
+      {params.typequanly == "thong-tin-tai-khoan" && <Update_infor_user />}
+
+      {/* CAP NHAT THONG TIN ACCOUNT */}
+      {params.typequanly == "tai-khoan" && <Update_infor_account />}
     </div>
   );
 };

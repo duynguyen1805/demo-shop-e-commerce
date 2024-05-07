@@ -127,9 +127,19 @@ export const columns_table_manager_order: ColumnDef<build_data_manager_order>[] 
     },
     {
       accessorKey: "payment",
-      header: "PTTT",
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            PTTT
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        );
+      },
       cell: ({ row }) => {
-        return <div className="text-left">{row.getValue("payment")}</div>;
+        return <div className="text-left ml-5">{row.getValue("payment")}</div>;
       },
     },
     {

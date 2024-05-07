@@ -81,7 +81,7 @@ const Admin = () => {
               Quản lý tài khoản
             </div>
           </div>
-          <div className="h-full w-[calc(100vw-360px)] border border-blue-500 bg-white rounded-l-xl shadow-lg px-4 py-2">
+          <div className="h-full w-[calc(100vw-360px)] border border-blue-300 bg-white rounded-l-xl shadow-md px-4 py-2">
             {tabSelect == "quanlydonhang" && <Quan_ly_don_hang />}
             {tabSelect == "thongkedoanhthu" && <Thong_ke_doanh_thu />}
             {tabSelect == "quanlytaikhoan" && <Quan_ly_tai_khoan />}

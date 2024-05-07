@@ -26,6 +26,7 @@ interface UserInfo {
   address: string;
   date_birthday: string;
   gender: string;
+  avatar?: string;
 }
 
 const Login_form: React.FC<Props> = ({ handleToggleForm }) => {

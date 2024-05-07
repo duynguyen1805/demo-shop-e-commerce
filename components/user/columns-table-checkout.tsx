@@ -165,13 +165,12 @@ export const columns_table_checkout: ColumnDef<build_data_product>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(data_in_row.id)}
+            // onClick={() => navigator.clipboard.writeText(data_in_row.id)}
             >
-              Copy data_in_row ID
+              Đặt thêm
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View data_in_row details</DropdownMenuItem>
+            <DropdownMenuItem>Gỡ khỏi giỏ hàng</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

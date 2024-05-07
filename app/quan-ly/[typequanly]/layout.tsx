@@ -16,24 +16,24 @@ const Manager_account_Layout = (props: { children: React.ReactNode }) => {
   }, [selected]);
 
   return (
-    <>
+    <div className="h-screen">
       <Header />
       <div
         className={cn(
           inter.className,
-          "h-auto w-full bg-white flex flex-col items-center justify-center"
+          "min-h-[calc(100vh-100px)] h-auto w-full bg-white flex flex-col items-center justify-start"
         )}
       >
-        <div className="w-[98%] border rounded-md shadow-md flex flex-col items-center justify-center mt-2">
-          <div className="w-full h-[120px] px-11 flex flex-col justify-center">
+        <div className="min-h-full h-auto w-[98%] border rounded-md shadow-md flex flex-col items-center justify-start mt-2">
+          <div className="w-full h-[100px] px-11 flex flex-col justify-center">
             <span className="uppercase text-2xl font-semibold">
               Quản lý chung
             </span>
             <span className="text-lg">Cập nhật thông tin của bạn.</span>
           </div>
           <div className="h-[1px] w-[96%] bg-gray-300"></div>
-          <div className="min-h-[750px] h-auto w-full flex my-5">
-            <div className="h-full w-1/6 px-5 py-2">
+          <div className="h-auto w-full flex my-5">
+            <div className="h-auto w-1/6 px-5 py-2">
               <Link
                 href={"./tai-khoan"}
                 className={cn(
@@ -50,7 +50,7 @@ const Manager_account_Layout = (props: { children: React.ReactNode }) => {
                   selected == "/quan-ly/thong-tin-tai-khoan" && "bg-gray-100"
                 )}
               >
-                Cập nhật thông tin tài khoản
+                Cập nhật thông tin cá nhân
               </Link>
               <Link
                 href={"./update-dia-chi-giao-hang"}
@@ -85,7 +85,7 @@ const Manager_account_Layout = (props: { children: React.ReactNode }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
