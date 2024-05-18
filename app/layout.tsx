@@ -21,7 +21,7 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export const metadata: Metadata = {
-  title: "E-commerce - Login or Signup",
+  title: "Demo E-commerce - ABC",
   description: "No description",
 };
 

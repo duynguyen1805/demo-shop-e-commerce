@@ -37,3 +37,6 @@ next-env.d.ts
 
 # docker
 Dockerfile
+
+#config firebase
+/firebase.config.tsx

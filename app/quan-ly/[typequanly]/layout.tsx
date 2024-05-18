@@ -1,11 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Header from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
+
+// export const metadata: Metadata = {
+//   title: "Quản lý chung - Khách hàng",
+//   description: "Chưa lấy động từng loại quản lý",
+// };
 
 const Manager_account_Layout = (props: { children: React.ReactNode }) => {
   // let selected = window.location.pathname; // ex: /quan-ly/tai-khoan

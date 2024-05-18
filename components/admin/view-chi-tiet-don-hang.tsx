@@ -46,6 +46,7 @@ import {
   DocumentData,
 } from "firebase/firestore";
 import { db } from "../../firebase.config";
+import { cn } from "@/lib/utils";
 
 type props = {
   data_in_row: any;
@@ -167,13 +168,43 @@ const View_chi_tiet_don_hang: React.FC<props> = ({ data_in_row }) => {
                       </TableCell>
                       <TableCell>{item.payment}</TableCell>
                       <TableCell>
-                        {item.status == "placed" && "Đặt hàng"}
-                        {item.status == "confirmed" && "Đã xác nhận"}
-                        {item.status == "processing" && "Đang xử lý"}
-                        {item.status == "outfordelivery" &&
-                          "Đã giao cho Vận chuyển"}
-                        {item.status == "delivered" && "Đã giao"}
-                        {item.status == "cancelled" && "Đã hủy"}
+                        <p
+                          className={cn(
+                            "px-2 py-[3px] w-fit  font-medium rounded-sm",
+                            `${
+                              item.status == "placed" &&
+                              "bg-blue-100 text-blue-600"
+                            }`,
+                            `${
+                              item.status == "confirmed" &&
+                              "bg-blue-700 text-white"
+                            }`,
+                            `${
+                              item.status == "processing" &&
+                              "bg-yellow-300 text-yellow-800"
+                            }`,
+                            `${
+                              item.status == "outfordelivery" &&
+                              "bg-orange-300 text-orange-800"
+                            }`,
+                            `${
+                              item.status == "delivered" &&
+                              "bg-green-100 text-green-600"
+                            }`,
+                            `${
+                              item.status == "cancelled" &&
+                              "bg-red-300 text-red-600"
+                            }`
+                          )}
+                        >
+                          {item.status == "placed" && "Đặt hàng"}
+                          {item.status == "confirmed" && "Đã xác nhận"}
+                          {item.status == "processing" && "Đang xử lý"}
+                          {item.status == "outfordelivery" &&
+                            "Đã giao cho Vận chuyển"}
+                          {item.status == "delivered" && "Đã giao"}
+                          {item.status == "cancelled" && "Đã hủy"}
+                        </p>
                       </TableCell>
                       <TableCell className="flex items-center ml-4">
                         <DropdownMenu>

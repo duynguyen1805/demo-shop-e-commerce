@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -159,12 +160,26 @@ export const columns_table_manager_order: ColumnDef<build_data_manager_order>[] 
         let status = row.getValue("status");
         return (
           <div className="pl-6">
-            {status == "placed" && "Đặt hàng"}
-            {status == "confirmed" && "Đã xác nhận"}
-            {status == "processing" && "Đang xử lý"}
-            {status == "outfordelivery" && "Đã giao cho Vận chuyển"}
-            {status == "delivered" && "Đã giao"}
-            {status == "cancelled" && "Đã hủy"}
+            <p
+              className={cn(
+                "px-2 py-[3px] w-fit  font-medium rounded-sm",
+                `${status == "placed" && "bg-blue-100 text-blue-600"}`,
+                `${status == "confirmed" && "bg-blue-700 text-white"}`,
+                `${status == "processing" && "bg-yellow-300 text-yellow-800"}`,
+                `${
+                  status == "outfordelivery" && "bg-orange-300 text-orange-800"
+                }`,
+                `${status == "delivered" && "bg-green-100 text-green-600"}`,
+                `${status == "cancelled" && "bg-red-300 text-red-600"}`
+              )}
+            >
+              {status == "placed" && "Đặt hàng"}
+              {status == "confirmed" && "Đã xác nhận"}
+              {status == "processing" && "Đang xử lý"}
+              {status == "outfordelivery" && "Đã giao cho Vận chuyển"}
+              {status == "delivered" && "Đã giao"}
+              {status == "cancelled" && "Đã hủy"}
+            </p>
           </div>
         );
       },

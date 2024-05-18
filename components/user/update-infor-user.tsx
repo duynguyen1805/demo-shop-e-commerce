@@ -17,38 +17,47 @@ import {
 } from "../ui/select";
 
 type info_user = {
-  id_user: string;
-  phonenumber: string;
-  avatar: string;
-  username: string;
-  address: string;
-  date_birthday: string;
-  gender: string;
+  id_user?: string;
+  phonenumber?: string;
+  avatar?: string;
+  username?: string;
+  address?: string;
+  date_birthday?: string;
+  gender?: string;
 };
 
 const Update_infor_user = () => {
   const [user, setuser] = useState<info_user | null>();
 
-  const [date_birthday, setDate_birthday] = useState<Date | null>();
-  const [gender, setGender] = useState<string | null>();
-  const [userName, setuserName] = useState<string | null>();
-  const [addRess, setaddRess] = useState<string | null>();
-  const [phoneNumber, setphoneNumber] = useState<string | null>();
-  const [avatar, setavatar] = useState<string | null>();
+  const [id_user, setid_user] = useState<string>();
+  const [date_birthday, setDate_birthday] = useState<Date>();
+  const [date_birthday_format, setDate_birthday_format] = useState<string>();
+  const [gender, setGender] = useState<string>();
+  const [userName, setuserName] = useState<string>();
+  const [addRess, setaddRess] = useState<string>();
+  const [phoneNumber, setphoneNumber] = useState<string>();
+  const [avatar, setavatar] = useState<string>();
 
-  // getdata user from local storage
   useEffect(() => {
     //lấy thông tin người dùng
     let user: any = localStorage.getItem("user_shopee");
     const parse_user = JSON.parse(user);
     setuser(parse_user);
+    setid_user(parse_user?.id_user);
     setuserName(parse_user?.username);
     setphoneNumber(parse_user?.phonenumber);
     setaddRess(parse_user?.address);
     setGender(parse_user?.gender);
-    // setDate_birthday(new Date(parse_user?.date_birthday));
-    setavatar(parse_user?.avatar);
   }, []);
+
+  const user_onChange: info_user = {
+    id_user: id_user,
+    phonenumber: phoneNumber,
+    username: userName,
+    address: addRess,
+    date_birthday: "18/5/2001",
+    gender: gender,
+  };
 
   return (
     <div className="min-h-[500px] w-full flex">
@@ -166,7 +175,19 @@ const Update_infor_user = () => {
           </Select>
         </div>
         <div className="flex items-center justify-center w-1/3 pt-5">
-          <div className="h-[45px] w-[120px] flex items-center justify-center rounded-md bg-blue-400 text-white cursor-pointer hover:bg-blue-500">
+          <div
+            onClick={() =>
+              console.log(
+                "check: ",
+                user,
+                user_onChange,
+                user !== user_onChange
+              )
+            }
+            className={`${
+              user_onChange !== user ? "bg-blue-500" : ""
+            } h-[45px] w-[120px] flex items-center justify-center rounded-md bg-blue-400 text-white cursor-pointer hover:bg-blue-500`}
+          >
             Cập nhật
           </div>
         </div>
