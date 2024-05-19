@@ -7,12 +7,12 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_API_KEY_FIREBASE,
-  authDomain: "facebook-clone-fb6ac.firebaseapp.com",
-  projectId: "facebook-clone-fb6ac",
-  storageBucket: "facebook-clone-fb6ac.appspot.com",
-  messagingSenderId: "1090270112131",
-  appId: "1:1090270112131:web:d3fb35d709d5906eb0aeb6",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: "G-QNZGE69QC9",
 };
 
