@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 
 import { DANHMUC } from "@/constant";
 
@@ -27,11 +28,7 @@ const Filter_maytinh = () => {
                 key={index}
                 className="h-auto w-full text-base flex items-center space-x-2"
               >
-                <input
-                  type="checkbox"
-                  value={item}
-                  className="bg-white"
-                ></input>
+                <Checkbox value={item} />
                 <div className="h-auto w-full">{item}</div>
               </div>
             );

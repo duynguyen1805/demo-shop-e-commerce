@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Cart_tintuc = () => {
   const short_p: string =
-    "Phân trùn quế là một loại phân bón hữu cơ được sản xuất từ quá trình tiêu hóa của trùn quế. Trùn quế là một loại";
+    "Thông tin rò rỉ cho biết “tất cả các thông số kỹ thuật của máy ảnh, bao gồm camera trước, sau, cảm biến UPC và giá trị khẩu độ, đều giống hệt nhau và không có thay đổi”.";
 
   return (
     <div className={inter.className}>
@@ -19,10 +19,9 @@ const Cart_tintuc = () => {
         </div>
         <div className="w-full h-1/2 py-1 px-2">
           <div className="h-auto w-full line-clamp-2 font-semibold hover:text-main_color">
-            Thành phần dinh dưỡng trong phân trùn quế và tác dụng của nó. Thành
-            phần, công dụng và cách sử dụng
+            Đây là thông số chi tiết camera Galaxy Z Fold6 sắp ra mắt
           </div>
-          <div className="w-full text-gray-500 mt-1">Thứ 2, 08/04/2024</div>
+          <div className="w-full text-gray-500 mt-1">Chủ nhật, 09/06/2024</div>
           <div className="h-auto w-full line-clamp-3 text-gray-500">
             {short_p}
           </div>

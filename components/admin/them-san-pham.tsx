@@ -1,5 +1,6 @@
 "use client";
 import React, { use, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import icon_addimg from "../../public/assets/addimg.png";
 import {
@@ -39,6 +40,8 @@ import {
 import Option_laptop from "../filter_component/option-laptop";
 
 import { DANHMUC } from "@/constant";
+import Editor_blog from "./editor-blog";
+import CK_TextEditor from "./CKeditor";
 
 const Them_san_pham = () => {
   const { toast } = useToast();
@@ -182,224 +185,234 @@ const Them_san_pham = () => {
     setReviewImg_arr([]);
   };
 
+  const handleSave = (content: any) => {
+    // Logic để lưu content vào database
+    console.log("Nội dung bài viết:", content);
+  };
   return (
-    <div className="h-full w-full flex items-center">
-      <div className="h-full w-1/2 pl-1 pr-8 overflow-y-auto overflow-x-hidden">
-        <div className="grid grid-cols-1 gap-4">
-          <div className="flex flex-col items-start justify-center gap-1">
-            <label
-              htmlFor="title"
-              className="text-right w-auto flex items-start"
-            >
-              Tiêu đề - tên sản phẩm
-            </label>
-            <input
-              type="text"
-              id="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
-            />
-          </div>
-          <div className="grid grid-cols-3 gap-4">
+    <>
+      <div className="h-full w-full flex items-center">
+        <div className="h-full w-1/2 pl-1 pr-8 overflow-y-auto overflow-x-hidden">
+          <div className="grid grid-cols-1 gap-4">
             <div className="flex flex-col items-start justify-center gap-1">
               <label
-                htmlFor="type_danhmuc"
+                htmlFor="title"
                 className="text-right w-auto flex items-start"
               >
-                Loại Danh mục
+                Tiêu đề - tên sản phẩm
               </label>
-              <Select
-                onValueChange={(value: any) => handle_select_danhmuc(value)}
-              >
-                <SelectTrigger className="w-full outline-none">
-                  <SelectValue placeholder="Loại Danh mục" />
-                </SelectTrigger>
-                <SelectContent>
-                  {DANHMUC &&
-                    DANHMUC.map((item: any, index: number) => {
-                      return (
-                        <SelectItem
-                          key={index}
-                          value={item}
-                          onClick={() => console.log("check")}
+              <input
+                type="text"
+                id="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
+              />
+            </div>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="flex flex-col items-start justify-center gap-1">
+                <label
+                  htmlFor="type_danhmuc"
+                  className="text-right w-auto flex items-start"
+                >
+                  Loại Danh mục
+                </label>
+                <Select
+                  onValueChange={(value: any) => handle_select_danhmuc(value)}
+                >
+                  <SelectTrigger className="w-full outline-none">
+                    <SelectValue placeholder="Loại Danh mục" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {DANHMUC &&
+                      DANHMUC.map((item: any, index: number) => {
+                        return (
+                          <SelectItem
+                            key={index}
+                            value={item}
+                            onClick={() => console.log("check")}
+                          >
+                            {item.title}
+                          </SelectItem>
+                        );
+                      })}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex flex-col items-start justify-center gap-1">
+                <label
+                  htmlFor="type_product"
+                  className="text-right w-auto flex items-start"
+                >
+                  Loại sản phẩm
+                </label>
+                <Select onValueChange={(value) => setTypeProduct(value)}>
+                  <SelectTrigger className="w-full outline-none">
+                    <SelectValue placeholder="Loại sản phẩm" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {chitietDanhmuc &&
+                      chitietDanhmuc.map((item: any, index: number) => {
+                        return (
+                          <SelectItem key={index} value={item.title}>
+                            {item.title}
+                          </SelectItem>
+                        );
+                      })}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex flex-col items-start justify-center gap-1">
+                <label
+                  htmlFor="quantity"
+                  className="text-right w-auto flex items-start"
+                >
+                  Số lượng
+                </label>
+                <input
+                  type="number"
+                  id="quantity"
+                  value={quantity}
+                  onChange={(e) => setquantity(Number(e.target.value))}
+                  className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-4">
+              <div className="flex flex-col items-start justify-center gap-1">
+                <label
+                  htmlFor="giaban"
+                  className="text-right w-auto flex items-start"
+                >
+                  Giá bán
+                </label>
+                <input
+                  type="number"
+                  id="giaban"
+                  value={price}
+                  onChange={(e) => setPrice(Number(e.target.value))}
+                  className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
+                />
+              </div>
+              <div className="flex flex-col items-start justify-center gap-1">
+                <label
+                  htmlFor="discount"
+                  className="text-right w-auto flex items-start"
+                >
+                  % khuyến mãi
+                </label>
+                <input
+                  type="number"
+                  id="discount"
+                  value={persent_discount}
+                  onChange={(e) => setpersent_discount(Number(e.target.value))}
+                  className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
+                />
+              </div>
+              <div className="flex flex-col items-start justify-center gap-1">
+                <label className="text-right w-auto flex items-start">
+                  Giá còn lại
+                </label>
+                <label className="h-[40px] w-full flex items-center border border-gray-200 rounded-md px-2 outline-none">
+                  {price_after_discount.toLocaleString("vi-VI")}
+                </label>
+              </div>
+            </div>
+            <div className="grid grid-cols-1">
+              <Option_laptop
+                hang_laptop={hang_laptop}
+                ram_laptop={ram_laptop}
+                ocung_laptop={ocung_laptop}
+                manhinh_laptop={manhinh_laptop}
+                sethang_laptop={sethang_laptop}
+                setram_laptop={setram_laptop}
+                setocung_laptop={setocung_laptop}
+                setmanhinh_laptop={setmanhinh_laptop}
+              />
+            </div>
+            {/* // add image sanpham */}
+            <div className="grid grid-cols-1">
+              <div className="h-full w-full relative overflow-hidden">
+                <input
+                  className="absolute inset-0 w-full h-full bg-white opacity-0 cursor-pointer"
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={(e) => {
+                    handleFile(e);
+                  }}
+                />
+                <button className="h-full w-full bg-gray-100 text-white text-lg cursor-pointer">
+                  <div className="h-full w-full flex items-center justify-center gap-4 py-3">
+                    <Image
+                      src={icon_addimg}
+                      alt="icon"
+                      className="w-[32px] h-[32px] scale-150"
+                    />
+                    <p className="text-black">
+                      Tải ảnh lên từ 1 đến 5 ảnh sản phẩm
+                    </p>
+                  </div>
+                </button>
+              </div>
+              <div className="h-auto w-full flex flex-wrap gap-[5px]">
+                {img_review !== null && img_review !== "" ? (
+                  img_review?.map((item_img: any, index: number) => {
+                    return (
+                      <div
+                        key={index}
+                        className="h-[200px] w-[180px] flex items-center justify-center relative"
+                      >
+                        <div
+                          className="h-full w-full bg-center bg-contain bg-no-repeat border border-blue-400"
+                          style={{ backgroundImage: `url(${item_img})` }}
+                        ></div>
+                        <button
+                          className="absolute z-10 h-[24px] w-[24px] top-[-7px] right-[-10px] p-1 bg-black text-white rounded-full text-xs"
+                          onClick={() => handleCloseButtonClick(index)}
                         >
-                          {item.title}
-                        </SelectItem>
-                      );
-                    })}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="flex flex-col items-start justify-center gap-1">
-              <label
-                htmlFor="type_product"
-                className="text-right w-auto flex items-start"
-              >
-                Loại sản phẩm
-              </label>
-              <Select onValueChange={(value) => setTypeProduct(value)}>
-                <SelectTrigger className="w-full outline-none">
-                  <SelectValue placeholder="Loại sản phẩm" />
-                </SelectTrigger>
-                <SelectContent>
-                  {chitietDanhmuc &&
-                    chitietDanhmuc.map((item: any, index: number) => {
-                      return (
-                        <SelectItem key={index} value={item.title}>
-                          {item.title}
-                        </SelectItem>
-                      );
-                    })}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="flex flex-col items-start justify-center gap-1">
-              <label
-                htmlFor="quantity"
-                className="text-right w-auto flex items-start"
-              >
-                Số lượng
-              </label>
-              <input
-                type="number"
-                id="quantity"
-                value={quantity}
-                onChange={(e) => setquantity(Number(e.target.value))}
-                className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-4">
-            <div className="flex flex-col items-start justify-center gap-1">
-              <label
-                htmlFor="giaban"
-                className="text-right w-auto flex items-start"
-              >
-                Giá bán
-              </label>
-              <input
-                type="number"
-                id="giaban"
-                value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
-                className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
-              />
-            </div>
-            <div className="flex flex-col items-start justify-center gap-1">
-              <label
-                htmlFor="discount"
-                className="text-right w-auto flex items-start"
-              >
-                % khuyến mãi
-              </label>
-              <input
-                type="number"
-                id="discount"
-                value={persent_discount}
-                onChange={(e) => setpersent_discount(Number(e.target.value))}
-                className="h-[40px] w-full bg-white border border-gray-200 rounded-md px-2 outline-none"
-              />
-            </div>
-            <div className="flex flex-col items-start justify-center gap-1">
-              <label className="text-right w-auto flex items-start">
-                Giá còn lại
-              </label>
-              <label className="h-[40px] w-full flex items-center border border-gray-200 rounded-md px-2 outline-none">
-                {price_after_discount.toLocaleString("vi-VI")}
-              </label>
-            </div>
-          </div>
-          <div className="grid grid-cols-1">
-            <Option_laptop
-              hang_laptop={hang_laptop}
-              ram_laptop={ram_laptop}
-              ocung_laptop={ocung_laptop}
-              manhinh_laptop={manhinh_laptop}
-              sethang_laptop={sethang_laptop}
-              setram_laptop={setram_laptop}
-              setocung_laptop={setocung_laptop}
-              setmanhinh_laptop={setmanhinh_laptop}
-            />
-          </div>
-          {/* // add image sanpham */}
-          <div className="grid grid-cols-1">
-            <div className="h-full w-full relative overflow-hidden">
-              <input
-                className="absolute inset-0 w-full h-full bg-white opacity-0 cursor-pointer"
-                type="file"
-                accept="image/*"
-                multiple
-                onChange={(e) => {
-                  handleFile(e);
-                }}
-              />
-              <button className="h-full w-full bg-gray-100 text-white text-lg cursor-pointer">
-                <div className="h-full w-full flex items-center justify-center gap-4 py-3">
-                  <Image
-                    src={icon_addimg}
-                    alt="icon"
-                    className="w-[32px] h-[32px] scale-150"
-                  />
-                  <p className="text-black">
-                    Tải ảnh lên từ 1 đến 5 ảnh sản phẩm
-                  </p>
-                </div>
-              </button>
-            </div>
-            <div className="h-auto w-full flex flex-wrap gap-[5px]">
-              {img_review !== null && img_review !== "" ? (
-                img_review?.map((item_img: any, index: number) => {
-                  return (
-                    <div
-                      key={index}
-                      className="h-[200px] w-[180px] flex items-center justify-center relative"
-                    >
-                      <div
-                        className="h-full w-full bg-center bg-contain bg-no-repeat border border-blue-400"
-                        style={{ backgroundImage: `url(${item_img})` }}
-                      ></div>
-                      <button
-                        className="absolute z-10 h-[24px] w-[24px] top-[-7px] right-[-10px] p-1 bg-black text-white rounded-full text-xs"
-                        onClick={() => handleCloseButtonClick(index)}
-                      >
-                        X
-                      </button>
+                          X
+                        </button>
 
-                      <div
-                        className={
-                          index === 0
-                            ? `h-[25px] w-full bg-black opacity-80 text-white flex items-center justify-center absolute z-10 bottom-[1px]`
-                            : ""
-                        }
-                      >
-                        {index === 0 ? `Ảnh bìa` : ``}
+                        <div
+                          className={
+                            index === 0
+                              ? `h-[25px] w-full bg-black opacity-80 text-white flex items-center justify-center absolute z-10 bottom-[1px]`
+                              : ""
+                          }
+                        >
+                          {index === 0 ? `Ảnh bìa` : ``}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })
-              ) : (
-                <></>
-              )}
+                    );
+                  })
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="h-full w-1/2 flex flex-col items-end space-y-5 overflow-auto">
-        <textarea
+        <div className="h-full w-1/2 flex flex-col items-end space-y-5 overflow-auto">
+          {/* <textarea
           className="h-auto w-full min-h-[500px] px-2 py-2 bg-white border border-gray-300 rounded-md outline-none"
           placeholder="Nhập mô tả, thông tin sản phẩm"
           value={mota}
           onChange={(e) => setmota(e.target.value)}
-        ></textarea>
-        <button
-          className="h-auto w-[180px] px-5 py-2 bg-main_color text-white rounded-md hover:bg-blue-500"
-          onClick={() => handle_add_product()}
-        >
-          Thêm sản phẩm
-        </button>
+        ></textarea> */}
+          <div className="h-auto w-full min-h-[500px] px-2 py-2 bg-white border border-gray-300 rounded-md outline-none">
+            {/* <Editor_blog /> */}
+            <CK_TextEditor onSave={handleSave} />
+          </div>
+          <button
+            className="h-auto w-[180px] px-5 py-2 bg-main_color text-white rounded-md hover:bg-blue-500"
+            onClick={() => handle_add_product()}
+          >
+            Thêm sản phẩm
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

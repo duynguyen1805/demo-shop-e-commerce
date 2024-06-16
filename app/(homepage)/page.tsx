@@ -30,29 +30,50 @@ import { setIsLoading } from "@/provider/redux/loading";
 import Cart_item_loading from "@/components/cart/cart-item-loading";
 import Cart_tintuc from "@/components/cart/cart-tintuc";
 
+import Product_card from "@/utils/types";
+
+// SERVICE BACKEND
+import { Get_list_product } from "@/service/product.service";
+
 const Homepage = () => {
   const isLoading: boolean = useSelector(
     (state: any) => state.setIsLoading.isLoading
   );
   const dispatch = useDispatch();
 
-  const [arrProduct, setArr_Product] = useState<any[]>([]);
-  // refesh data san pham
+  const [arrProduct, setArr_Product] = useState<Product_card[]>([]);
+  // refesh data san pham - FIREBASE
+  // useEffect(() => {
+  //   const fetching_data_product = async () => {
+  //     try {
+  //       const CollectionRef = collection(db, "store");
+  //       const querySnapshot = await getDocs(CollectionRef);
+
+  //       const products: DocumentData[] = [];
+  //       querySnapshot.forEach((doc) => {
+  //         products.push({ id: doc.id, ...doc.data() });
+  //       });
+  //       setArr_Product(products);
+  //       console.log("check arr_user: ", querySnapshot);
+  //       console.log("arr_product from firebase: ", arrProduct);
+  //     } catch (error) {
+  //       console.error("error fetching infor users from firebase: ", error);
+  //     }
+  //     dispatch(setIsLoading(false));
+  //   };
+  //   fetching_data_product();
+  // }, [arrProduct.length]);
+
   useEffect(() => {
     const fetching_data_product = async () => {
       try {
-        const CollectionRef = collection(db, "store");
-        const querySnapshot = await getDocs(CollectionRef);
-
-        const products: DocumentData[] = [];
-        querySnapshot.forEach((doc) => {
-          products.push({ id: doc.id, ...doc.data() });
-        });
-        setArr_Product(products);
-        console.log("check arr_user: ", querySnapshot);
-        console.log("arr_product from firebase: ", arrProduct);
+        const response: Product_card[] = await Get_list_product();
+        if (response) setArr_Product(response);
       } catch (error) {
-        console.error("error fetching infor users from firebase: ", error);
+        console.error(
+          "Error fetching list product for homepage from BE: ",
+          error
+        );
       }
       dispatch(setIsLoading(false));
     };
