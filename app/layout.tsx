@@ -34,15 +34,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={myFont.className}>
         <ProviderRedux store={store}>
-          <NextThemeProvider
+          {/* <NextThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </NextThemeProvider>
+          > */}
+          {children}
+          <Toaster />
+          {/* </NextThemeProvider> */}
         </ProviderRedux>
       </body>
     </html>
