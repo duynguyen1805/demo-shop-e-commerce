@@ -81,7 +81,7 @@
 }
 
 /* for animation 'flip' ------------------------------- */
-.flip-container {
+/* .flip-container {
   perspective: 100%;
 }
 .flip-container:hover .flipper,
@@ -111,7 +111,7 @@
 }
 .back {
   transform: rotateY(180deg);
-}
+} */
 
 /* animation loading ------------------------------- */
 .loadingOverlay {

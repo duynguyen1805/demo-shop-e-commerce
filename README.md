@@ -10,6 +10,7 @@ _Account Demo:_
 ## Table of Contents
 
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
@@ -60,6 +61,42 @@ Developing...
   - Update product images, information, prices, and promotions.
 - **Create Product Posts:** Create detailed posts for new products.
 - **Revenue Statistics:** Generate monthly and yearly revenue reports.
+
+## Screenshorts
+
+## Screenshots
+
+- **Homepage**
+
+![ImageHomepage](./public//assets//img//img_readme/homepage.png)
+
+- **Detail category**
+
+![Detail category](./public//assets//img//img_readme/categori.png)
+
+- **Detail product**
+
+![Detail product](./public//assets//img//img_readme/detail_product.png)
+
+- **Manage Cart**
+
+![Manage Cart](./public//assets//img//img_readme/quanlygiohang_user.png)
+
+- **Manage Order**
+
+![Manage Order](./public//assets//img//img_readme/quanlydonhang_user.png)
+
+- **Manage Order [SHOP]**
+
+![Manage Order [SHOP]](./public//assets//img//img_readme/quanlydonhang_admin.png)
+
+- **Manage Order - DETAIL [SHOP]**
+
+![Manage Order - DETAIL [SHOP]](./public//assets//img//img_readme/quanlydonhang_admin_chitietorder.png)
+
+- **Manage Products [SHOP]**
+
+![Manage Products [SHOP]](./public//assets//img//img_readme/quanlysanpham_admin.png)
 
 ## Tech Stack
 

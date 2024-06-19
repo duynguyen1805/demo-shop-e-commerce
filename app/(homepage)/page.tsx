@@ -30,6 +30,17 @@ import { setIsLoading } from "@/provider/redux/loading";
 import Cart_item_loading from "@/components/cart/cart-item-loading";
 import Cart_tintuc from "@/components/cart/cart-tintuc";
 
+// hash img for cart blog
+import galaxy_bug_3 from "../../public/assets/img/samsung-galaxy-buds-3-pro-cover.webp";
+import vivoY58 from "../../public/assets/img/thong-tin-vivo-y58-5g.jpeg";
+import oneui7 from "../../public/assets/img/oneui7.jpeg";
+import ryzen from "../../public/assets/img/amd-ryzen-ai-300-3.jpg";
+
+// import Product_card from "@/utils/types";
+
+// SERVICE BACKEND
+// import { Get_list_product } from "@/service/product.service";
+
 const Homepage = () => {
   const isLoading: boolean = useSelector(
     (state: any) => state.setIsLoading.isLoading
@@ -37,7 +48,7 @@ const Homepage = () => {
   const dispatch = useDispatch();
 
   const [arrProduct, setArr_Product] = useState<any[]>([]);
-  // refesh data san pham
+  // refesh data san pham - FIREBASE
   useEffect(() => {
     const fetching_data_product = async () => {
       try {
@@ -58,6 +69,55 @@ const Homepage = () => {
     };
     fetching_data_product();
   }, [arrProduct.length]);
+
+  // useEffect(() => {
+  //   const fetching_data_product = async () => {
+  //     try {
+  //       const response: Product_card[] = await Get_list_product();
+  //       if (response) setArr_Product(response);
+  //     } catch (error) {
+  //       console.error(
+  //         "Error fetching list product for homepage from BE: ",
+  //         error
+  //       );
+  //     }
+  //     dispatch(setIsLoading(false));
+  //   };
+  //   fetching_data_product();
+  // }, [arrProduct.length]);
+
+  const fake_data_tintuc = [
+    {
+      thumb: galaxy_bug_3,
+      title:
+        "Đây là thiết kế và cử chỉ mới của tai nghe Galaxy Buds 3 Pro sắp ra mắt",
+      time: "Thứ 3, 19/06/2024",
+      description:
+        "Theo các báo cáo trước đây cho biết, Samsung sẽ ra mắt tai nghe Galaxy Buds 3 Pro trong sự kiện Galaxy Unpacked tiếp theo vào ngày 10 tháng 7 tới.",
+    },
+    {
+      thumb: vivoY58,
+      title: "Hé lộ thiết kế và ngày ra mắt vivo Y58 5G",
+      time: "Thứ 3, 19/06/2024",
+      description:
+        "Theo thông tin rò rỉ mới nhất, vivo dường như đang phát triển phiên bản kế nhiệm của điện thoại vivo Y56 5G đã ra mắt vào tháng 2 năm ngoái.",
+    },
+    {
+      thumb: oneui7,
+      title: "Khi nào Samsung phát hành OneUI 7.0 dựa trên Android 15?",
+      time: "Thứ 3, 19/06/2024",
+      description:
+        "Với việc Samsung đã tung bản cập nhật OneUI 6.1 cho hầu hết các điện thoại và máy tính bảng Galaxy đủ điều kiện thì hiện sự tập trung của người dùng đang đổ dồn về One UI 6.1.1, sẽ ra mắt trên Galaxy Z Fold6 và Galaxy Z Flip6 vào tháng 7.",
+    },
+    {
+      thumb: ryzen,
+      title:
+        "Tất tần tật về CPU AMD Ryzen AI 300: Kiến trúc mới, lấy AI làm trọng tâm, hiệu năng đầy hứa hẹn",
+      time: "Thứ 3, 19/06/2024",
+      description:
+        "Tại sự kiện Computex 2024, AMD đã chính thức giới thiệu dòng bộ xử lý Ryzen AI 300 Strix Point với nhiều cải tiến, đặc biệt là năng lực xử lý AI nâng lên một tầm cao mới.",
+    },
+  ];
 
   return (
     <div className="min-h-screen h-auto w-full">
@@ -98,14 +158,10 @@ const Homepage = () => {
             <span className="text-lg text-gray-400">TIN TỨC - BÀI VIẾT</span>
           </div>
           <div className="w-full grid grid-cols-4 gap-5 px-3">
-            <Cart_tintuc />
-            <Cart_tintuc />
-            <Cart_tintuc />
-            <Cart_tintuc />
-            <Cart_tintuc />
-            <Cart_tintuc />
-            <Cart_tintuc />
-            <Cart_tintuc />
+            {fake_data_tintuc &&
+              fake_data_tintuc.map((item, index) => {
+                return <Cart_tintuc key={index} item={item} />;
+              })}
           </div>
           <div className="w-full flex items-center justify-center mt-5">
             <div className="w-fit px-4 py-[6px] border border-main_color bg-main_color text-white rounded hover:bg-white hover:text-main_color cursor-pointer">
